@@ -505,7 +505,7 @@ button:hover .dj video {
 }
 .stage {
   position: relative;
-  width: min(580px, 74vw, 64svh);
+  width: min(580px, 74vw, 58svh);
   aspect-ratio: 1200 / 1010;
 }
 .stage canvas {
@@ -536,7 +536,7 @@ button:hover .dj video {
 .wm {
   position: relative;
   margin: 20px 0 0;
-  font-size: clamp(64px, min(12.5vw, 17svh), 184px);
+  font-size: clamp(64px, min(12.5vw, 24svh), 184px);
   line-height: 0.9;
 }
 .wm-t {

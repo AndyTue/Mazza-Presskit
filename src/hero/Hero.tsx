@@ -8,7 +8,7 @@ import { site, socials } from '../content/site'
 import { useSmoothScroll } from '../lib/scroll'
 import { HeroLogo } from './HeroLogo'
 
-const wordmarkSize = () => Math.max(64, Math.min(window.innerWidth * 0.125, window.innerHeight * 0.17, 184))
+const wordmarkSize = () => Math.max(64, Math.min(window.innerWidth * 0.125, window.innerHeight * 0.24, 184))
 
 export function Hero() {
   const { scrollTo } = useSmoothScroll()

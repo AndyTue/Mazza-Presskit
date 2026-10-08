@@ -7,21 +7,47 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+*.tsbuildinfo
+
+# Environment (.env only holds the public site URL and is tracked;
+# local overrides and anything with secrets stay out)
 *.local
+.env.*
+!.env.example
+
+# Deploy tooling
+.vercel
+
+# Python (scripts/*.py)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Test / tooling artifacts
+playwright-report/
+test-results/
+.playwright-mcp/
+scripts/.cache/
+.img2threejs/
+screens/
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-scripts/.cache/
-.img2threejs/
-screens/
+
+# OS
+.DS_Store
+Thumbs.db
