@@ -21,8 +21,8 @@ export function Hidden() {
 
   return (
     <section className="sec alt" aria-labelledby="h-hid">
-      <div className="g12" style={{ alignItems: 'end' }}>
-        <div style={{ gridColumn: '1 / span 5', display: 'flex', flexDirection: 'column', gap: 24 }}>
+      <div className="g12 hid-g">
+        <div className="hid-text">
           <RevealTitle id="h-hid" lines={['Hidden']} className="flush" />
           <p className="lead">{hidden.lead}</p>
           <p className="body">{hidden.body}</p>
@@ -36,7 +36,7 @@ export function Hidden() {
         </div>
 
         {current && (
-          <figure style={{ gridColumn: '6 / span 7', margin: 0 }}>
+          <figure className="hid-fig">
             {playing ? (
               <div className="img r24 vid">
                 <iframe

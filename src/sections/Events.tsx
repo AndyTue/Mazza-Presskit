@@ -51,13 +51,14 @@ export function Events() {
   )
   const current = events[index]
 
-  // Advances every 2 s, like the music carousel. Stops while the pointer or focus is on it,
-  // while it is off screen and under reduced motion; manual navigation restarts the count.
+  // Advances every 2 s, like the music carousel. Stops while it has keyboard focus and while
+  // it is off screen; manual navigation restarts the count. Under reduced motion the flyers
+  // still change on the same timer, just without the sliding animation.
   useEffect(() => {
-    if (reduce || hold || !inView || n < 2) return
+    if (hold || !inView || n < 2) return
     const t = window.setInterval(() => setIndex((i) => (i + 1) % n), AUTO_MS)
     return () => clearInterval(t)
-  }, [reduce, hold, inView, n, kick])
+  }, [hold, inView, n, kick])
 
   const onPanEnd = (_: PointerEvent, info: PanInfo) => {
     if (Math.abs(info.offset.x) < 30) return
@@ -101,9 +102,7 @@ export function Events() {
         className="cf-wrap"
         ref={stage}
         style={{ '--fw': `${width}px` } as CSSProperties}
-        onPointerEnter={() => setHold(true)}
-        onPointerLeave={() => setHold(false)}
-        onFocus={() => setHold(true)}
+        onFocus={(e) => setHold(e.target.matches(':focus-visible'))}
         onBlur={(e) => {
           if (!e.currentTarget.contains(e.relatedTarget)) setHold(false)
         }}

@@ -22,6 +22,14 @@ export function Bio() {
                 <dd className="disp">{f.value}</dd>
               </div>
             ))}
+            <div className="fact-loc">
+              <dt className="mono muted">[{bio.location.label}]</dt>
+              <dd>
+                {bio.location.parts.map((part) => (
+                  <span key={part}>{part}</span>
+                ))}
+              </dd>
+            </div>
           </dl>
         </div>
         <figure className="bio-fig">

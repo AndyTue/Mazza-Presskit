@@ -33,7 +33,12 @@ export function Contact() {
           <span>
             © {site.year} {site.name}
           </span>
-          <span>{site.location}</span>
+          <span className="foot-credit">
+            Diseñado por:{' '}
+            <a href="https://www.instagram.com/andy_tue/" target="_blank" rel="noopener noreferrer">
+              Andrés Turriza
+            </a>
+          </span>
           <button type="button" onClick={() => scrollTo('top')}>
             Volver arriba
             <IconArrowUp size={18} stroke={STROKE} aria-hidden="true" />

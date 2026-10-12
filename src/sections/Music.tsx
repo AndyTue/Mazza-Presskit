@@ -73,13 +73,14 @@ export function Music() {
   )
   const isOn = playing && loaded?.slug === current?.slug
 
-  // Advances every 2 s. Stops while a track plays, while the pointer or focus is on the
-  // carousel, while it is off screen and under reduced motion; manual navigation restarts it.
+  // Advances every 2 s. Stops while a track plays, while the carousel has keyboard focus and
+  // while it is off screen; manual navigation restarts the count. Under reduced motion the
+  // covers still change on the same timer, just without the sliding animation.
   useEffect(() => {
-    if (reduce || hold || !inView || playing || n < 2) return
+    if (hold || !inView || playing || n < 2) return
     const t = window.setInterval(() => setIndex((i) => (i + 1) % n), AUTO_MS)
     return () => clearInterval(t)
-  }, [reduce, hold, inView, playing, n, kick])
+  }, [hold, inView, playing, n, kick])
 
   const playCurrent = () => {
     if (!current) return
@@ -140,9 +141,7 @@ export function Music() {
             className="cvf-wrap"
             ref={stage}
             style={{ '--cs': `${size}px` } as CSSProperties}
-            onPointerEnter={() => setHold(true)}
-            onPointerLeave={() => setHold(false)}
-            onFocus={() => setHold(true)}
+            onFocus={(e) => setHold(e.target.matches(':focus-visible'))}
             onBlur={(e) => {
               if (!e.currentTarget.contains(e.relatedTarget)) setHold(false)
             }}

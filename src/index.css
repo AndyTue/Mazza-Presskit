@@ -508,6 +508,23 @@ button:hover .dj video {
   width: min(580px, 74vw, 58svh);
   aspect-ratio: 1200 / 1010;
 }
+/* Desktop: the logo stays pinned just under the navbar and the wordmark stacks below it,
+   so a bigger MAZZA grows downward instead of pushing the logo up. */
+@media (min-width: 901px) {
+  .hero-col {
+    justify-content: flex-start;
+    padding-top: 72px;
+  }
+  .hero-col .wm {
+    margin-top: 8px;
+  }
+  .hero-sc {
+    bottom: 6px;
+  }
+  .hero-col .soc {
+    margin-top: 10px;
+  }
+}
 .stage canvas {
   touch-action: pan-y;
 }
@@ -604,6 +621,21 @@ button:hover .dj video {
   margin: 48px 0 0;
   padding-top: 24px;
   border-top: 1px solid var(--color-line);
+}
+.bio .facts {
+  grid-template-columns: repeat(2, minmax(0, 150px)) minmax(0, 1fr);
+}
+.facts .fact-loc dd {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--color-bone);
+}
+.facts .fact-loc dd span:last-child {
+  color: var(--color-text);
 }
 .facts dd {
   font-size: clamp(28px, 3.4vw, 56px);
@@ -921,7 +953,45 @@ button:hover .dj video {
   border: 0;
 }
 
-/* Hidden */
+/* Hidden: text column and main video are the same height, so both sides line up.
+   The caption hangs below the video box and does not count toward that height. */
+.hid-g {
+  align-items: stretch;
+  margin-bottom: 36px;
+}
+.hid-text {
+  grid-column: 1 / span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hid-fig {
+  grid-column: 7 / span 6;
+  position: relative;
+  margin: 0;
+}
+.hid-fig .vid {
+  height: 100%;
+  min-height: 0;
+}
+.hid-fig .cap {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+@media (max-width: 900px) {
+  .hid-g {
+    margin-bottom: 0;
+  }
+  .hid-fig .vid {
+    height: auto;
+  }
+  .hid-fig .cap {
+    position: static;
+  }
+}
 .vid {
   aspect-ratio: 16 / 9;
   transition: border-color 0.3s;
@@ -1204,6 +1274,20 @@ button.gt:hover .gcap {
   color: var(--color-text);
 }
 
+.foot-credit a {
+  display: inline-block;
+  padding: 12px 2px;
+  color: var(--color-bone);
+  text-decoration: underline;
+  text-decoration-color: var(--color-maroon);
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+.foot-credit a:hover,
+.foot-credit a:focus-visible {
+  color: var(--color-maroon-hi);
+}
+
 /* Responsive */
 @media (max-width: 1180px) {
   .nav-l,
@@ -1289,8 +1373,12 @@ button.gt:hover .gcap {
   .g12 > * {
     grid-column: 1 / -1 !important;
   }
-  .facts {
+  .facts,
+  .bio .facts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .fact-loc {
+    grid-column: 1 / -1;
   }
   .svc-g > * {
     grid-column: 1 / -1;

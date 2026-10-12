@@ -8,5 +8,6 @@ export const bio = {
     { label: 'Años activo', value: '+6' },
     { label: 'Shows', value: '+250' },
   ],
+  location: { label: 'Ubicación', parts: ['México', 'Tizimín, Yucatán', 'Disponible para viajar'] },
   portrait: { name: 'foto-3', alt: 'Mazza concentrado en la mezcla, con audífonos', caption: 'Mazza en cabina' },
 }
